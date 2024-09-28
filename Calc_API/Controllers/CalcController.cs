@@ -32,7 +32,16 @@ namespace Calc_API.Controllers
         [HttpGet("Division")]
         public IActionResult Divide(decimal num1, decimal num2)
         {
-            
+            if (num1 == 0)
+            {
+                return BadRequest("Cannot divide by zero.");
+            }
+
+            if (num2 == 0)
+            {
+                return BadRequest("Cannot divide by zero.");
+            }
+
             var result = num1 / num2;
             return Ok(result);
         }
@@ -40,6 +49,11 @@ namespace Calc_API.Controllers
         [HttpGet ("Modulo")]
         public IActionResult Modulo(decimal num1, decimal num2)
         {
+            if (num1 == 0)
+            {
+                return BadRequest("Cannot divide by zero.");
+            }
+
             if (num2 == 0)
             {
                 return BadRequest("Cannot divide by zero.");
